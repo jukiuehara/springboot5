@@ -31,7 +31,7 @@
 
     <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
     <p>成功メッセージ</p>
-    <form method="get" action="menuServlet" class="search_container">
+    <form method="get" action="/menu" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
       <input type="submit" value="&#xf002">
     </form>

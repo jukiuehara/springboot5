@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.entity.Product;
 import com.example.demo.controller.entity.User;
@@ -46,6 +47,7 @@ public class productController {
 		if (user != null) {
 			List<Product> list = new ArrayList<>();
 			list = ps.search("");
+			session.setAttribute("Username", user.getName());
 			session.setAttribute("list", list);
 			return "menu";
 		} else {
@@ -53,6 +55,21 @@ public class productController {
 			return "index";
 		}
 
+	}
+	
+	@RequestMapping("/menu")
+	public String search(@RequestParam("key")String a,Model model) {
+		List<Product> list = new ArrayList<>();
+		list = ps.search(a);
+		
+		int count = 0;
+		for (Product i : list) {
+			System.out.print( i.getProduct_id());
+			count++;
+		}
+		session.setAttribute("count", count);
+		session.setAttribute("list", list);
+		return"menu";
 	}
 
 }
