@@ -72,7 +72,7 @@
         </fieldset>
         <div class="btns">
           <button type="submit" onclick="openModal(modal)" class="basic_btn" >登録</button>
-          <input type="button" onclick="location.href='menu'" value="戻る" class="cancel_btn">
+          <input type="button" onclick="location.href='back'" value="戻る" class="cancel_btn">
         </div>
         
         <div id="modal">

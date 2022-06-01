@@ -29,7 +29,7 @@
       <div class="img_block">
         <img src="images/マッキー.png" class="product_img"><br>
       </div>
-      <form:form action="edit" method="get"  >
+      <form:form action="e" method="get"  >
         <fieldset class="label-130 product_block">
           <p class="error">エラーメッセージ</p>
           <div>
@@ -57,15 +57,14 @@ ${product.getDescription()}
           </div>
         </fieldset>
 
-           </form:form>
     
            
          <div>          
 
           <div class="btns"> 
-            <form:button name="param1" onclick="openModal()" value="削除" class="basic_btn"/>
-            <form:button name="param2" onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn"/>
-            <form:button name="param3" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn"/>
+            <button action="edit" onclick="openModal()" value="削除" class="basic_btn"></button>
+            <button  onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn"></button>
+            <button onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn"></button>
           </div>
 
           
@@ -78,6 +77,7 @@ ${product.getDescription()}
           </div>
         </div>
 
+           </form:form>
     </div>
   </div>
   <div id="fadeLayer"></div>

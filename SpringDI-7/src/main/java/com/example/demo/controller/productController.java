@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.entity.Product;
@@ -111,9 +110,14 @@ public class productController {
 		return"detail";
 	}
 	
-	@RequestMapping(value = "/edit" , params = "param1" ,method=RequestMethod.GET)
+	@RequestMapping("/edit")
 	public String edit1(@RequestParam("name")int a,Model model) {
 		pss.delete(a);
 		return"detail";
+	}
+	@RequestMapping("/back")
+	public String back(Model model) {
+
+		return"menu";
 	}
 }
