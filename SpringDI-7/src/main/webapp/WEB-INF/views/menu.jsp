@@ -29,7 +29,7 @@
 
     <hr>
 
-    <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
+    <div class="btn"><a class="basic_btn regist" href="/in">新規登録</a></div>
     <p>成功メッセージ</p>
     <form method="get" action="/menu" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
@@ -67,7 +67,7 @@
             <td>${fn:escapeXml(product.getPrice()) }</td>
             <td>${fn:escapeXml(product.getCategory()) }</td>
             
-            <td><a class="detail_btn" href="./detail.jsp?name=${product.getProduct_id()} " >詳細</a></td>
+            <td><a class="detail_btn" href="/detail?name=${product.getProduct_id()} " >詳細</a></td>
           </tr>        
 
         </c:forEach> 

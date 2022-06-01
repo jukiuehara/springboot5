@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,47 +22,53 @@
   </div>
 
   <hr>
-            <%String value = request.getParameter("name"); %>
-            <%=value %>
+             
+
   <div class="update">
     <div class="form_body">
       <div class="img_block">
         <img src="images/マッキー.png" class="product_img"><br>
       </div>
-      <form action="menu.html" method="get">
+      <form:form action="edit" method="get"  >
         <fieldset class="label-130 product_block">
           <p class="error">エラーメッセージ</p>
           <div>
             <label>商品ID</label>
-            <input type="text" name="loginId" value=" <%=value %>" readonly class="base-text">
+            <input type="text" name="loginId" value=${product.getProduct_id() } readonly class="base-text">
           </div>
           <div>
             <label>商品名</label>
-            <input type="text" name="userName" value="マッキー(黒)" readonly class="base-text">
+            <input type="text" name="userName" value=${product.getName() } readonly class="base-text">
           </div>
           <div>
             <label>単価</label>
-            <input type="text" name="tel" value="165" readonly class="base-text">
+            <input type="text" name="tel" value=${product.getPrice() } readonly class="base-text">
           </div>
           <div>
             <label>カテゴリ</label>
-            <input type="text" name="roleName" value="ペン" readonly class="base-text">
+            <input type="text" name="roleName" value=${product.getCategory()} readonly class="base-text">
           </div>
           <div>
             <label>商品説明</label>
             <textarea name="description" readonly class="base-text" style="background-color: rgb(209, 209, 209);">
-ゼブラ株式会社
-線の太さ：太6.0mm、細1.5～2.0mm
+${product.getDescription()}
             </textarea>
 
           </div>
         </fieldset>
-        <div>
-          <div class="btns">
-            <input type="button" onclick="openModal()" value="削除" class="basic_btn">
-            <input type="button" onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn">
-            <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
+
+           </form:form>
+    
+           
+         <div>          
+
+          <div class="btns"> 
+            <form:button name="param1" onclick="openModal()" value="削除" class="basic_btn"/>
+            <form:button name="param2" onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn"/>
+            <form:button name="param3" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn"/>
           </div>
+
+          
           <div id="modal">
             <p class="modal_message">削除しますか？</p>
             <div class="btns">
@@ -70,7 +77,7 @@
             </div>
           </div>
         </div>
-      </form>
+
     </div>
   </div>
   <div id="fadeLayer"></div>

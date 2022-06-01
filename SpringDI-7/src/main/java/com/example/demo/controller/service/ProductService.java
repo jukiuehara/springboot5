@@ -13,30 +13,34 @@ import com.example.demo.controller.entity.Product;
 public class ProductService implements ProductServices{
 
 	@Autowired
-	private ProductDaos dao;
+	private ProductDaos daos;
+
 	
       public List<Product> search(String key){
           try {
-              return dao.fintdByProductKey(key);
+              return daos.fintdByProductKey(key);
           } catch (Exception e) {
               e.printStackTrace();
           }
           return null;
 }
-//      public void insert(int pid,int cid,String name, int price,String description) {
-//  		Product p = new Product();
-//  		Connection con = DbUtil.getConnection();
-//  		ProductDao pd = new ProductDao(con);
-//  		
-//		p.setProduct_id(pid);
-//		p.setCategory_id(cid);
-//		p.setName(name);
-//		p.setPrice(price);
-//		p.setDescription(description);
-//		
-//		pd.insert(p);
-//      }
-//      
+      
+      public void insert(int pid,int cid,String name, int price,String description) {
+  		Product p = new Product();
+		p.setProduct_id(pid);
+		p.setCategory_id(cid);
+		p.setName(name);
+		p.setPrice(price);
+		p.setDescription(description);
+		
+		daos.insert(p);
+      }
+      public Product fintdByProductId(Integer id) {
+    	  return daos.fintdByProductId(id);
+      }
+      public void delete(int id) {
+    	daos.delete(id);
+      }
 
 
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,46 +34,45 @@
     <div class="form_body">
       <p class="error">${msg}</p>
   
-      <form action="InsertServlet" method="post">
+      <form:form action="insert" method="post" modelAttribute="insert">
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
-            <input type="number" name="loginId" class="base-text">
-            <span class="error">${msgid}</span>
+            <form:input type="number" path="productId" class="base-text"/><form:errors path="productId" cssStyle="color: red"/>
+
           </div>
           <div>
             <label class="required">商品名</label>
-            <input type="text" name="userName" class="base-text">
-            <span class="error">${msgname}</span>
+            <form:input type="text" path="name" class="base-text"/><form:errors path="name" cssStyle="color: red"/>
+
           </div>
           <div>
             <label class="required">単価</label>
-            <input type="number" name="tel" class="base-text">
-            <span class="error">${msgprice}</span>
+            <form:input type="number" path="price" class="base-text"/><form:errors path="price" cssStyle="color: red"/>
           </div>
           <div class="select_block">
             <label class="required">カテゴリ</label>
-            <select name="roleId" class="base-text">
-              <option value="1">筆記具</option>
-              <option value="2">紙製品</option>
-              <option value="3">事務消耗品</option>
-              <option value="4">オフィス機器</option>
-              <option value="5">雑貨</option>
-            </select>
+            <form:select path="categoryId" class="base-text">
+              <form:option value="1">筆記具</form:option>
+              <form:option value="2">紙製品</form:option>
+              <form:option value="3">事務消耗品</form:option>
+              <form:option value="4">オフィス機器</form:option>
+              <form:option value="5">雑貨</form:option>
+            </form:select>
           </div>
           <div>
             <label>商品説明</label>
-            <textarea name="description" class="base-text"></textarea>
+            <form:textarea path="description" class="base-text"></form:textarea>
           </div>
           <div>
             <label>画像</label>
-            <input type="file" name="file">
+            <form:input type="file" path="file"/>
             <span class="error">  </span>
           </div>
         </fieldset>
         <div class="btns">
-          <button type="submit" onclick="openModal()" class="basic_btn" >登録</button>
-          <input type="button" onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn">
+          <button type="submit" onclick="openModal(modal)" class="basic_btn" >登録</button>
+          <input type="button" onclick="location.href='menu'" value="戻る" class="cancel_btn">
         </div>
         
         <div id="modal">
@@ -82,13 +83,13 @@
           </div>
           
         </div>
-      </form>
+      </form:form>
     </div>
   </div>
   <div id="fadeLayer"></div>
 </body>
 </html>
-<script src="./js/commons.js">
+<script src="${pageContext.request.contextPath}/js/commons.js">
 
 
 </script>
