@@ -12,14 +12,14 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<%String user = (String)session.getAttribute("Username");  %>
+
 
   <div id="app">
 
     <div class="header">
       <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
       <div class="user">
-        <p class="user_name"><%=user %>さん、こんにちは</p>
+        <p class="user_name">${Username}さん、こんにちは</p>
         <form class="logout_form" action="LogoutServlet" method="post">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
@@ -30,7 +30,7 @@
     <hr>
 
     <div class="btn"><a class="basic_btn regist" href="/in">新規登録</a></div>
-    <p>成功メッセージ</p>
+    <p>${deletemsg}</p>
     <form method="get" action="/menu" class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
       <input type="submit" value="&#xf002">

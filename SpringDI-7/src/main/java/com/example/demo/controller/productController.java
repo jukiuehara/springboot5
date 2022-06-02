@@ -98,6 +98,16 @@ public class productController {
 			return"insert";
 		}
 	}
+	@RequestMapping("/updatetable")
+	public String update(@Validated @ModelAttribute("update") ProductForm form, BindingResult bindingResult,
+			Model model) {
+		
+		if (bindingResult.hasErrors()) {
+			return "insert";
+		}
+		return "menu";
+	}
+
 	@RequestMapping("/in")
 	public String in(@ModelAttribute("insert") ProductForm from, Model model) {
 		return "insert";
@@ -111,13 +121,26 @@ public class productController {
 	}
 	
 	@RequestMapping("/edit")
-	public String edit1(@RequestParam("name")int a,Model model) {
-		pss.delete(a);
-		return"detail";
+	public String edit1(Model model) {
+		Product p =(Product)session.getAttribute("product");
+		pss.delete(p.getProduct_id());
+		String msg = "消去が完了しました";
+		model.addAttribute("deletemsg", msg);
+		return"menu";
+	}
+	@RequestMapping("/update")
+	public String update(@ModelAttribute("update") ProductForm form,Model model) {
+		Product p =(Product)session.getAttribute("product");
+		
+		form.setProductId(p.getProduct_id());
+		form.setName(p.getName());
+		form.setPrice(p.getPrice());
+		form.setDescription(p.getDescription());
+
+		return"update";
 	}
 	@RequestMapping("/back")
 	public String back(Model model) {
-
 		return"menu";
 	}
 }

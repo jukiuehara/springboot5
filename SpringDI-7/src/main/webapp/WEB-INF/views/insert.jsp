@@ -89,7 +89,7 @@
   <div id="fadeLayer"></div>
 </body>
 </html>
-<script src="${pageContext.request.contextPath}/js/commons.js">
+<script src="./js/commons.js">
 
 
 </script>

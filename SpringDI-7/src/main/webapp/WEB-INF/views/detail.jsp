@@ -29,7 +29,7 @@
       <div class="img_block">
         <img src="images/マッキー.png" class="product_img"><br>
       </div>
-      <form:form action="e" method="get"  >
+      <form>
         <fieldset class="label-130 product_block">
           <p class="error">エラーメッセージ</p>
           <div>
@@ -56,18 +56,20 @@ ${product.getDescription()}
 
           </div>
         </fieldset>
-
-    
-           
-         <div>          
-
-          <div class="btns"> 
-            <button action="edit" onclick="openModal()" value="削除" class="basic_btn"></button>
-            <button  onclick="location.href='./updateInput.jsp'" value="編集" class="basic_btn"></button>
-            <button onclick="location.href='./menu.jsp'" value="戻る" class="cancel_btn"></button>
+        <div>
+          <div class="btns">
+            <input type="button" onclick="openModal()" value="削除" class="basic_btn">
+            <input type="button" onclick="location.href='update'" value="編集" class="basic_btn">
+            <input type="button" onclick="location.href='back'" value="戻る" class="cancel_btn">
           </div>
+          
 
           
+        </div>
+      </form>
+    </div>
+  </div>     
+       <form:form  action="/edit">
           <div id="modal">
             <p class="modal_message">削除しますか？</p>
             <div class="btns">
@@ -75,11 +77,7 @@ ${product.getDescription()}
               <button type="button" onclick="closeModal()" class="cancel_btn">キャンセル</button>
             </div>
           </div>
-        </div>
-
-           </form:form>
-    </div>
-  </div>
+          </form:form>
   <div id="fadeLayer"></div>
 </body>
 </html>
