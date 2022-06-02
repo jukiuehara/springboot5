@@ -57,7 +57,7 @@ public class ProductDao implements ProductDaos{
 		MapSqlParameterSource param = new MapSqlParameterSource();
 	    param.addValue("id", userId);
 	    p =  jdbcTemplate.query(sql,param, new BeanPropertyRowMapper<Product>(Product.class));
-	    
+
 	    return p.isEmpty() ? null : p.get(0);
 	}
 	

@@ -25,7 +25,7 @@
 
   <div class="insert">
     <div class="form_body">
-      <p class="error">エラーメッセージ</p>
+      ${erroridmsg}
 
       <form:form action="updatetable" method="post" modelAttribute="update">
         <fieldset class="label-130">

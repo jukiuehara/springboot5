@@ -98,13 +98,25 @@ public class productController {
 			return"insert";
 		}
 	}
+	
 	@RequestMapping("/updatetable")
 	public String update(@Validated @ModelAttribute("update") ProductForm form, BindingResult bindingResult,
 			Model model) {
-		
 		if (bindingResult.hasErrors()) {
-			return "insert";
+			return "update";
 		}
+
+		int id = form.getProductId();	
+		Product p = pss.fintdByProductId(id);
+		int productid = p.getProduct_id();
+
+		if(productid==id) {
+			String msg = "商品idが重複しています";
+			model.addAttribute("erroridmsg", msg);
+			System.out.println("こんにちは");
+			return"update";
+		}
+		
 		return "menu";
 	}
 
