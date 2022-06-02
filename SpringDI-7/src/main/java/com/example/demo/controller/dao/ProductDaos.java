@@ -9,4 +9,5 @@ public interface ProductDaos {
 	public void insert(Product product);
 	public Product fintdByProductId(Integer userId);
 	public void delete(int id);
+	public void update(Product p,int oldid);
 }

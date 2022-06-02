@@ -18,6 +18,7 @@ public class ProductDao implements ProductDaos{
 	private static final String SQL_INSERT_PRODUCT = "insert into products (product_id, category_id, name, price, description)values(:id, :category, :name, :price, :description)";
 	private static final String SQL_SELECT_ID = "SELECT product_id, category_id, p.name as name,description,price,c.name as category FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE product_id = :id";
 	private static final String SQL_DELETE ="delete from products where product_id = :id;";
+	private static final String SQL_UPDATE ="UPDATE products SET product_id=':id',category_id =:category ,name= ':name',price = :price,description = ':des' WHERE product_id = :oldid;";
 	
 	
     @Autowired
@@ -65,6 +66,17 @@ public class ProductDao implements ProductDaos{
 		String sql = SQL_DELETE;
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("id", id);
+		jdbcTemplate.update(sql,param);
+	}
+	public void update(Product p,int oldid) {
+		String sql = SQL_UPDATE;
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("id", p.getProduct_id());
+		param.addValue("category", p.getCategory_id());
+		param.addValue("name", p.getName());
+		param.addValue("price", p.getPrice());
+		param.addValue("des", p.getDescription());
+		param.addValue("oldid", oldid);
 		jdbcTemplate.update(sql,param);
 	}
 }

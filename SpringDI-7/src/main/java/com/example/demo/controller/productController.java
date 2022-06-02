@@ -109,13 +109,20 @@ public class productController {
 		int id = form.getProductId();	
 		Product p = pss.fintdByProductId(id);
 		int productid = p.getProduct_id();
+		
+		Product a =(Product)session.getAttribute("product");
+		System.out.println(form.getProductId());
+		System.out.println(form.getCategoryId());
+		System.out.println(form.getName());
+		System.out.println(form.getDescription());
+		System.out.println(a.getProduct_id());
 
 		if(productid==id) {
 			String msg = "商品idが重複しています";
 			model.addAttribute("erroridmsg", msg);
-			System.out.println("こんにちは");
 			return"update";
 		}
+		pss.update(form.getProductId(),form.getCategoryId(),form.getName(), form.getPrice(),form.getDescription() ,a.getProduct_id());
 		
 		return "menu";
 	}

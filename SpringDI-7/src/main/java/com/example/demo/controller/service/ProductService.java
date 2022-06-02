@@ -41,6 +41,15 @@ public class ProductService implements ProductServices{
       public void delete(int id) {
     	daos.delete(id);
       }
-
+      public void update(int pid,int cid,String name, int price,String description ,int oldid) {
+    		Product p = new Product();
+    		p.setProduct_id(pid);
+    		p.setCategory_id(cid);
+    		p.setName(name);
+    		p.setPrice(price);
+    		p.setDescription(description);
+    		
+    		daos.update(p,oldid);
+      }
 
 }

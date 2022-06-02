@@ -9,4 +9,5 @@ public interface ProductServices {
 	public void insert(int pid,int cid,String name, int price,String description);
 	public Product fintdByProductId(Integer id);
 	public void delete(int id);
+	public void update(int pid,int cid,String name, int price,String description ,int oldid);
 }
