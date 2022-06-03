@@ -49,13 +49,13 @@ public class productController {
 			List<Product> list = new ArrayList<>();
 			list = pss.search("");
 			session.setAttribute("Username", user.getName());
+			session.setAttribute("Role", user.getRole());
 			session.setAttribute("list", list);
 			return "menu";
 		} else {
 			model.addAttribute("msg", "IDまたはパスワードが不正です");
 			return "index";
 		}
-
 	}
 
 	@RequestMapping("/menu")
@@ -83,7 +83,7 @@ public class productController {
 		case "oldid":
 			
 			list.sort((p1, p2) -> p1.getId() <= p2.getId() ? -1 : 1);
-			System.out.println(list.get(1));
+	
 			break;
 		case "newid":
 			
@@ -92,7 +92,6 @@ public class productController {
 
 		}
 		for (Product i : list) {
-			System.out.print(i.getProduct_id());
 			count++;
 		}
 		session.setAttribute("count", count);

@@ -28,9 +28,16 @@
     </div>
 
     <hr>
-
+  <c:choose>
+    <c:when test="${Role eq 1}">
     <div class="btn"><a class="basic_btn regist" href="/in">新規登録</a></div>
     <p>${deletemsg}</p>
+    </c:when>
+    <c:otherwise>
+
+    </c:otherwise>
+  </c:choose>
+
     <form method="get" action="/menu">
     <div class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
