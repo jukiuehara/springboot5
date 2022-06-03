@@ -1,6 +1,7 @@
 package com.example.demo.controller.entity;
 
 public class Product{
+	private int id;
 	private int product_id;
 	private int category_id;
 	private String name;
@@ -12,13 +13,22 @@ public class Product{
 		
 	}
 	
-	public Product(int product_id,int category_id,String name,int price,String description,String category) {
+	public Product(int id,int product_id,int category_id,String name,int price,String description,String category) {
+		this.id = id;
 		this.product_id = product_id;
 		this.category_id = category_id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.category = category;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCategory() {

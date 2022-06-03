@@ -31,7 +31,7 @@
       </div>
       <form>
         <fieldset class="label-130 product_block">
-          <p class="error">エラーメッセージ</p>
+          <p class="error"></p>
           <div>
             <label>商品ID</label>
             <input type="text" name="loginId" value=${product.getProduct_id() } readonly class="base-text">

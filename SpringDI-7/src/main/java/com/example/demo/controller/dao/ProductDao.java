@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -14,7 +13,7 @@ import com.example.demo.controller.entity.Product;
 
 @Repository
 public class ProductDao implements ProductDaos{
-	private static final String SQL_SELECT_KEY_NAME = "SELECT product_id, category_id, p.name as name,description,price,c.name as category FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE p.name LIKE :Pname or c.name LIKE :Cname";
+	private static final String SQL_SELECT_KEY_NAME = "SELECT p.id,product_id, category_id, p.name as name,description,price,c.name as category FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE p.name LIKE :Pname or c.name LIKE :Cname";
 	private static final String SQL_INSERT_PRODUCT = "insert into products (product_id, category_id, name, price, description)values(:id, :category, :name, :price, :description)";
 	private static final String SQL_SELECT_ID = "SELECT product_id, category_id, p.name as name,description,price,c.name as category FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE product_id = :id";
 	private static final String SQL_DELETE ="delete from products where product_id = :id;";
@@ -23,9 +22,7 @@ public class ProductDao implements ProductDaos{
 	
     @Autowired
     private NamedParameterJdbcTemplate  jdbcTemplate;
-    
-    @Autowired
-   private JdbcTemplate  jdbcTemplate2;
+   
 	
 	public List<Product> fintdByProductKey(String name) {
 		List<Product> p = new ArrayList<>();

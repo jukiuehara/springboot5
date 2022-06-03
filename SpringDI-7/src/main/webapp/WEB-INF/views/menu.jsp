@@ -31,23 +31,28 @@
 
     <div class="btn"><a class="basic_btn regist" href="/in">新規登録</a></div>
     <p>${deletemsg}</p>
-    <form method="get" action="/menu" class="search_container">
+    <form method="get" action="/menu">
+    <div class="search_container">
       <input type="text" size="25" placeholder="キーワード検索" name="key">
       <input type="submit" value="&#xf002">
-    </form>
-    <table>
+	</div>
+
         <div class="caption"><p>検索結果：${count}件</p></div>
         <div class="order">
-          <select class="base-text">
+
+          <select class="base-text" name="category" >
             <option>並び替え</option>
-            <option>商品ID</option>
-            <option>カテゴリ</option>
-            <option>単価：安い順</option>
-            <option>単価：高い順</option>
-            <option>登録日：古い順</option>
-            <option>登録日：新しい順</option>
-          </select>
+            <option value="id">商品ID</option>
+            <option value="category">カテゴリ</option>
+            <option value="lowprice">単価：安い順</option>
+            <option value="heigtprice">単価：高い順</option>
+            <option value="oldprice">登録日：古い順</option>
+            <option value="newprice">登録日：新しい順</option>
+          </select>         
         </div>
+       </form>   
+       
+     <table>        
       <thead>
         <tr>
           <th>商品ID</th>

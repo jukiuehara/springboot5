@@ -59,11 +59,38 @@ public class productController {
 	}
 
 	@RequestMapping("/menu")
-	public String search(@RequestParam("key") String a, Model model) {
+	public String search(@RequestParam("key") String a,@RequestParam("category") String b,Model model) {
 		List<Product> list = new ArrayList<>();
 		list = pss.search(a);
-
 		int count = 0;
+		switch(b) {
+		case "heigtprice":
+			
+			list.sort((p1, p2) -> p1.getPrice() >= p2.getPrice() ? -1 : 1);
+			break;
+		case "id":
+			
+			list.sort((p1, p2) -> p1.getProduct_id() <= p2.getProduct_id() ? -1 : 1);
+			break;
+		case "category":
+			
+			list.sort((p1, p2) -> p1.getCategory_id() >= p2.getCategory_id() ? -1 : 1);
+			break;
+		case "lowprice":
+			
+			list.sort((p1, p2) -> p1.getPrice() <= p2.getPrice() ? -1 : 1);
+			break;
+		case "oldid":
+			
+			list.sort((p1, p2) -> p1.getId() <= p2.getId() ? -1 : 1);
+			System.out.println(list.get(1));
+			break;
+		case "newid":
+			
+			list.sort((p1, p2) -> p1.getId() >= p2.getId() ? -1 : 1);
+			break;
+
+		}
 		for (Product i : list) {
 			System.out.print(i.getProduct_id());
 			count++;
@@ -72,6 +99,8 @@ public class productController {
 		session.setAttribute("list", list);
 		return "menu";
 	}
+	
+
 
 	@RequestMapping("/insert")
 	public String insert(@Validated @ModelAttribute("insert") ProductForm form, BindingResult bindingResult,
