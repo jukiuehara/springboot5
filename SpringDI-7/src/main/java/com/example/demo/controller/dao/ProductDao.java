@@ -18,7 +18,7 @@ public class ProductDao implements ProductDaos{
 	private static final String SQL_INSERT_PRODUCT = "insert into products (product_id, category_id, name, price, description)values(:id, :category, :name, :price, :description)";
 	private static final String SQL_SELECT_ID = "SELECT product_id, category_id, p.name as name,description,price,c.name as category FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE product_id = :id";
 	private static final String SQL_DELETE ="delete from products where product_id = :id;";
-	private static final String SQL_UPDATE ="UPDATE products SET product_id=':id',category_id =:category ,name= ':name',price = :price,description = ':des' WHERE product_id = :oldid;";
+	private static final String SQL_UPDATE ="UPDATE products SET product_id=:id,category_id =:category ,name= :name,price = :price,description = :des WHERE product_id = :oldid;";
 	
 	
     @Autowired
